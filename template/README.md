@@ -88,6 +88,17 @@ screen and run the following SQL queries to get the updated records but via SQL
 ## Example 3: Updating Records with Distributed ACID Transactions
 
 With Apache Ignite distributed transactions you can modify records of different caches/tables and cluster nodes atomically.
+
 Open `AppTemplate2Transactions` source code template that demonstrates how to use the transactional APIs if you need to 
 update a population of two or more Cities atomically. Search for `DEMO_TODO` tags in the source code to finish building 
 the application and resolve all possible exceptions the application can generate when you start it incomplete.
+
+## Example 4: Calculating Average Population with Compute APIs
+
+Ignite compute APIs allow us creating custom Java tasks and execute them on server nodes. Depending on the application logic
+complexity, this minimizes or fully eliminates data movement over the network and, thus, can improve performance greatly.
+
+Open `AppTemplate3Compute` source code template that calculates an average population across all the cities of a specific country.
+The application does this by running a compute task on a server node that keeps all the cities of a country. 
+Search for `DEMO_TODO` tags in the source code to finish building the application and resolve all possible exceptions 
+the application can generate when you start it incomplete.

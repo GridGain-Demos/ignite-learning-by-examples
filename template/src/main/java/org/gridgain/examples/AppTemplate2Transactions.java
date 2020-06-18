@@ -57,21 +57,21 @@ public class AppTemplate2Transactions {
         int migratedResidentsNumber = 10_000;
 
         try (Transaction tx = txs.txStart(TransactionConcurrency.PESSIMISTIC, TransactionIsolation.REPEATABLE_READ)) {
-            /*
-                DEMO_TODO #1: annotate the <code>CityKey.COUNTRYCODE</code> field with <code>@AffinityKeyMapped</code>
-                to instruct Ignite to use a proper affinity key for key-value calls. Once you do this, you will fix
-                the `Caused by: class org.apache.ignite.binary.BinaryObjectException: Binary type has different affinity key fields...`
-                exception reported by the application initially.
+            /**
+              *  DEMO_TODO #1: annotate the <code>CityKey.COUNTRYCODE</code> field with <code>@AffinityKeyMapped</code>
+              *  to instruct Ignite to use a proper affinity key for key-value calls. Once you do this, you will fix
+              *  the `Caused by: class org.apache.ignite.binary.BinaryObjectException: Binary type has different affinity key fields...`
+              *  exception reported by the application initially.
              */
             City newYork = cityCache.get(newYorkPK);
             City losAngeles = cityCache.get(losAngelesPK);
 
             System.out.println("Population Before [NY=" + newYork.getPopulation() + ", LA=" + losAngeles.getPopulation() + "]");
 
-            /*
-                DEMO_TODO #2: complete the implementation by increasing the population of New York on the value of
-                <code>migratedResidentsNumber</code> and decreasing the population of Los Angeles respectively.
-                Refer to `App2Transactions` of the `complete` project for a final solution.
+            /**
+              *  DEMO_TODO #2: complete the implementation by increasing the population of New York on the value of
+              *  {@link migratedResidentsNumber} and decreasing the population of Los Angeles respectively.
+              *  Refer to {@see App2Transactions} of the `complete` project for a final solution.
              */
 
 

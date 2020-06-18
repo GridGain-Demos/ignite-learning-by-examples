@@ -34,8 +34,10 @@ import org.apache.ignite.lang.IgniteCallable;
 import org.apache.ignite.resources.IgniteInstanceResource;
 
 /**
- * TODO: change the logic, demonstrate that the new version of the class is loaded to the servers automatically.
- *
+ * This application c alculates an average population across all the cities of a specific country.
+ * It does this by running a compute task on a server node that keeps all the cities of a country.
+ * Search for `DEMO_TODO` tags in the source code to finish building the application and resolve all possible exceptions
+ * the application can generate when you start it incomplete.
  */
 public class AppTemplate3Compute {
     /**
@@ -46,8 +48,8 @@ public class AppTemplate3Compute {
         Ignition.setClientMode(true);
 
         try (Ignite client = Ignition.start("complete/cfg/ignite-config.xml")) {
-            calculateAverageCountryPopulation(client, "USA");
-            calculateAverageCountryPopulation(client, "GBR");
+            calculateAverageCountryPopulation(client, "BRA");
+            calculateAverageCountryPopulation(client, "RUS");
         }
     }
 
@@ -95,7 +97,19 @@ public class AppTemplate3Compute {
                 new IgniteBiPredicate<BinaryObject, BinaryObject>() {
                     @Override public boolean apply(BinaryObject key, BinaryObject object) {
                         //Filtering out cities of other countries that stored in the same partition.
-                        return key.field("CountryCode").equals(countryCode);
+
+                        /**
+                         * DEMO_TODO: presently the filter returns all the cities stored in {@link partition} while it
+                         * must take into account only those records whose country code is equal to {@link countryCode}.
+                         * Otherwise, the logic might count the populations of cities of countries different from {@link countryCode}
+                         * that are stored in the same partition. Fix this issue. Refer to {@see App3Compute} of the
+                         * `complete` project for a final solution.
+                         *
+                         * The new version of the class of this compute task will be loaded to the server nodes automatically
+                         * thanks to the peer-class-loading features. This doesn't require you to restart the cluster if
+                         * application logic changes.
+                         */
+                        return true;
                     }
                 });
 
