@@ -86,3 +86,8 @@ screen and run the following SQL queries to get the updated records but via SQL
 * `SELECT name, continent, headofstate FROM Country WHERE code = 'USA';` - must return Donald Trump
 
 ## Example 3: Updating Records with Distributed ACID Transactions
+
+With Apache Ignite distributed transactions you can modify records of different caches/tables and cluster nodes atomically.
+Open `AppTemplate2Transactions` source code template that demonstrates how to use the transactional APIs if you need to 
+update a population of two or more Cities atomically. Search for `DEMO_TODO` tags in the source code to finish building 
+the application and resolve all possible exceptions the application can generate when you start it incomplete.

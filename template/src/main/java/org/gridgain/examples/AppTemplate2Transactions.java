@@ -28,9 +28,9 @@ import org.gridgain.examples.model.City;
 import org.gridgain.examples.model.CityKey;
 
 /**
- * TODO:
- * 1) Annotate the affinity key of the CityKey Object.
- * 2) Finish the implementation of the transaction.
+ * This application demonstrates how to use the transactional APIs if you need to update a population of two or more
+ * Cities atomically. Search for `DEMO_TODO` tags in the source code to finish building the application and resolve all
+ * possible exceptions the application can generate when you start it incomplete.
  */
 public class AppTemplate2Transactions {
     /**
@@ -57,12 +57,23 @@ public class AppTemplate2Transactions {
         int migratedResidentsNumber = 10_000;
 
         try (Transaction tx = txs.txStart(TransactionConcurrency.PESSIMISTIC, TransactionIsolation.REPEATABLE_READ)) {
+            /*
+                DEMO_TODO #1: annotate the <code>CityKey.COUNTRYCODE</code> field with <code>@AffinityKeyMapped</code>
+                to instruct Ignite to use a proper affinity key for key-value calls. Once you do this, you will fix
+                the `Caused by: class org.apache.ignite.binary.BinaryObjectException: Binary type has different affinity key fields...`
+                exception reported by the application initially.
+             */
             City newYork = cityCache.get(newYorkPK);
             City losAngeles = cityCache.get(losAngelesPK);
 
             System.out.println("Population Before [NY=" + newYork.getPopulation() + ", LA=" + losAngeles.getPopulation() + "]");
 
-            // TODO
+            /*
+                DEMO_TODO #2: complete the implementation by increasing the population of New York on the value of
+                <code>migratedResidentsNumber</code> and decreasing the population of Los Angeles respectively.
+                Refer to `App2Transactions` of the `complete` project for a final solution.
+             */
+
 
             tx.commit();
 
