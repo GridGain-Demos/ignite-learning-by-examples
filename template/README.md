@@ -70,8 +70,19 @@ SELECT country.name, city.name, MAX(city.population) as max_pop FROM country
 * Update the population: `UPDATE City SET population = 5000 WHERE id = 4000;`
 * Check that the change took affect: `SELECT name, population FROM City WHERE id = 4000;`
 
-## Access Records Using Key-Value APIs 
+## Example 2: Using Key-Value APIs for CRUD operations
 
-Even though the database was created using DDL syntax, you still can define have POJOs and work with the date using 
-key-value, compute and other non-SQL APIs of Ignite. Run `TODO_Name` application that demonstrates how to read and update
-records with key-value calls.
+Even though the database was created using DDL syntax, you still can create  POJOs and work with the clustered data using 
+key-value, compute and other non-SQL APIs of Ignite.
+
+Open `AppTemplate1KeyValue` source code template that demonstrates several key-value techniques. Search for `DEMO_TODO`
+tags in the source code to finish building the application and resolve all possible exceptions the application can generate when
+you start it incomplete.
+
+Once you complete all `DEMO_TODOs` making the application fully functional, switch back to the GridGain Control Center SQL
+screen and run the following SQL queries to get the updated records but via SQL
+
+* `SELECT name, continent, headofstate FROM Country WHERE code = 'GBR';` - must return Boris Johnson
+* `SELECT name, continent, headofstate FROM Country WHERE code = 'USA';` - must return Donald Trump
+
+## Example 3: Updating Records with Distributed ACID Transactions

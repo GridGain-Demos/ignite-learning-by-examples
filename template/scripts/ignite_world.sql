@@ -26,7 +26,7 @@ CREATE TABLE Country (
   Capital INT(11),
   Code2 CHAR(2),
   PRIMARY KEY (Code)
-) WITH "template=partitioned, backups=1, CACHE_NAME=Country";
+) WITH "template=partitioned, backups=1, CACHE_NAME=Country, VALUE_TYPE=org.gridgain.examples.model.Country";
 
 CREATE TABLE City (
   ID INT(11),
@@ -35,7 +35,8 @@ CREATE TABLE City (
   District CHAR(20),
   Population INT(11),
   PRIMARY KEY (ID, CountryCode)
-) WITH "template=partitioned, backups=1, atomicity=transactional, AFFINITY_KEY=CountryCode, CACHE_NAME=City";
+) WITH "template=partitioned, backups=1, atomicity=transactional, AFFINITY_KEY=CountryCode, CACHE_NAME=City,
+        VALUE_TYPE=org.gridgain.examples.model.City, KEY_TYPE=org.gridgain.examples.model.CityKey";
 
 CREATE INDEX idx_country_code ON city (CountryCode);
 
