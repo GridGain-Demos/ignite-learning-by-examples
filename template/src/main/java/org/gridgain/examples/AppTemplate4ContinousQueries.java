@@ -33,8 +33,11 @@ import org.gridgain.examples.model.City;
 import org.gridgain.examples.model.CityKey;
 
 /**
- * TODO: complete the implementation of the remote filter and local listener. The filter has send notifications only if
- * the population field gets changed. The listener has to deserialize BinaryObjects to POJO.
+ * This application subscribes for notifications about cities' population changes.
+ * The application does this by running a special continuous query.
+ *
+ * Search for `DEMO_TODO` tags in the source code to finish building the application and resolve all possible exceptions
+ * the application can generate when you start it incomplete.
  */
 public class AppTemplate4ContinousQueries {
     /**
@@ -87,12 +90,15 @@ public class AppTemplate4ContinousQueries {
                 @Override
                 public boolean evaluate(CacheEntryEvent<? extends BinaryObject, ? extends BinaryObject> e) {
                     // Notify the application only if the population has been changes.
-                    if (!e.getOldValue().<Integer>field("population").equals(
-                        e.getValue().<Integer>field("population")))
-                        return true;
-
-                    // Don't send a notification in all other cases
-                    return false;
+                    /**
+                     * DEMO_TODO: notify the application only if the value of the population field gets changed.
+                     * For instance, if you execute the following query via GridGain Control Center or by other means
+                     * the application will be updated as well - `UPDATE City SET name = 'LA' WHERE id = 3794;`. We
+                     * don't want this to happen and would rather react to the changes of the population.
+                     *
+                     * Refer to {@see App4ContinousQueries} of the `complete` project for a final solution.
+                     */
+                    return true;
                 }
             };
         }

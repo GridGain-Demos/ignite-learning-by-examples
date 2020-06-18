@@ -1,6 +1,12 @@
 # Source Code Templates: Learning Apache Ignite Through Examples
 
-Follow the steps below to start an Ignite cluster and experiment with various APIs and capabilities.
+Follow the steps below (strictly, not skipping anything) to start an Ignite cluster and experiment with various APIs and
+capabilities. This application, that you're going to build, uses the World database schema to demonstrate how to access
+and process data with SQL, compute, key-value APIs. It also shows how to update records of cities with Ignite transactions
+and subscribe for data changes that happen on server nodes.
+ 
+Refer to the [complete](https://github.com/GridGain-Demos/ignite-learning-by-examples/tree/master/complete) version of 
+the project if you'd like to skip this learning format and would rather run a finished project.
 
 ## Starting Ignite Cluster and Connect to GridGain Control Center
 
@@ -102,3 +108,40 @@ Open `AppTemplate3Compute` source code template that calculates an average popul
 The application does this by running a compute task on a server node that keeps all the cities of a country. 
 Search for `DEMO_TODO` tags in the source code to finish building the application and resolve all possible exceptions 
 the application can generate when you start it incomplete.
+
+## Example 5: Receiving Notifications on Data Changes with Continuous Queries APIs
+
+An application can subscribe to receive updates from server nodes whenever any application record gets changed. Ignite 
+supports Continuous Queries APIs for that purpose.
+
+Open `AppTemplate4ContinousQueries` that starts an application that subscribes for notifications about cities' population
+changes. The application does this by running a special continuous query. 
+Search for `DEMO_TODO` tags in the source code to finish building the application and resolve all possible exceptions 
+the application can generate when you start it incomplete.
+
+## Example 6: No Data Loss On Cluster Crashes or Restarts
+
+If you check [ignite-config.xml](https://github.com/GridGain-Demos/ignite-learning-by-examples/blob/master/template/cfg/ignite-config.xml) file,
+you'll notice that the cluster not only cached the application records in memory but also persisted them in Ignite native persistence.
+It means that the cluster can tolerate crashes and restarts not losing a bit of data.
+
+Do the following:
+
+* Stop the 2-nodes cluster
+* Stop `AppTemplate4ContinousQueries` application
+* Bring the cluster back
+* Go to the GridGain Control Center SQL screen and execute any previous query such as the one below:
+
+```
+SELECT country.name, city.name, MAX(city.population) as max_pop FROM country
+     JOIN city ON city.countrycode = country.code
+     WHERE country.code IN ('USA','RUS','CHN','KOR','MEX','AUT','BRA','ESP','JPN')
+     GROUP BY country.name, city.name 
+     ORDER BY max_pop DESC LIMIT 3;
+``` 
+
+The cluster will execute the query successfully by serving all the records from disk! You don't need to warm-up the main
+memory on restarts. The cluster becomes operation as soon as all the nodes are inter-connected.
+
+Congratulations, you've finished building this application and now should understand Ignite capabilities, at least, 
+a little bit better.

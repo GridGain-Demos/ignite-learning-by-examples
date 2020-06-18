@@ -27,6 +27,10 @@ import org.apache.ignite.binary.BinaryObject;
 import org.apache.ignite.binary.BinaryObjectBuilder;
 import org.gridgain.examples.model.Country;
 
+/**
+ * The application demonstrates several key-value techniques. It reads and updates several
+ * records using basic `cache.get/put` commands as well as more advanced techniques such as `EntryProcessors`.
+ */
 public class App1KeyValue {
 
     /**

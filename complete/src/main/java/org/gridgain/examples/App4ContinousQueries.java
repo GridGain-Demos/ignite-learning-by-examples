@@ -32,6 +32,10 @@ import org.apache.ignite.cache.query.SqlFieldsQuery;
 import org.gridgain.examples.model.City;
 import org.gridgain.examples.model.CityKey;
 
+/**
+ * The application subscribes for updates from server nodes and gets notified whenever a population of a city is changed.
+ * Ignite supports Continuous Queries APIs for that purpose.
+ */
 public class App4ContinousQueries {
     /**
      * Start the application, connect to the cluster and execute the logic.

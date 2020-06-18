@@ -33,6 +33,10 @@ import org.apache.ignite.lang.IgniteBiPredicate;
 import org.apache.ignite.lang.IgniteCallable;
 import org.apache.ignite.resources.IgniteInstanceResource;
 
+/**
+ * The application calculates an average population across all the cities of a specific country.
+ * The application does this by running a compute task on a server node that keeps all the cities of a country.
+ */
 public class App3Compute {
     /**
      * Start the application, connect to the cluster and execute the logic.

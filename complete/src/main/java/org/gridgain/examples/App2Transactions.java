@@ -27,6 +27,10 @@ import org.apache.ignite.transactions.TransactionIsolation;
 import org.gridgain.examples.model.City;
 import org.gridgain.examples.model.CityKey;
 
+/**
+ * The application demonstrates how to use the transactional APIs if you need to
+ * update a population of two or more Cities atomically.
+ */
 public class App2Transactions {
     /**
      * Start the application, connect to the cluster and execute the logic.
