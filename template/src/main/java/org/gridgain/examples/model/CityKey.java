@@ -23,7 +23,6 @@ import org.apache.ignite.cache.affinity.AffinityKeyMapped;
 public class CityKey {
     private int ID;
 
-    @AffinityKeyMapped
     private String COUNTRYCODE;
 
     public CityKey(int id, String countryCode) {
