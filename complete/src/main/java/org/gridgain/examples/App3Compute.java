@@ -46,8 +46,8 @@ public class App3Compute {
         Ignition.setClientMode(true);
 
         try (Ignite client = Ignition.start("complete/cfg/ignite-config.xml")) {
-            calculateAverageCountryPopulation(client, "USA");
-            calculateAverageCountryPopulation(client, "GBR");
+            calculateAverageCountryPopulation(client, "BRA");
+            calculateAverageCountryPopulation(client, "RUS");
         }
     }
 

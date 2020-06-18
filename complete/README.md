@@ -12,7 +12,8 @@ to finish building the application on your own.
 
 * Download [Apache Ignite 2.8.1](https://ignite.apache.org/download.cgi) or later
 * Download GridGain Control Center agent and [put it into the Ignite libs folder](https://www.gridgain.com/docs/control-center/latest/connect-ignite-cluster).
-* Start a 2-nodes cluster using the configuration from the project `scripts/ignite_world.sql`
+* [Start a 2-nodes cluster](https://www.gridgain.com/docs/latest/getting-started/quick-start/java#starting-a-gridgain-node) 
+using `{root_of_this_project}/complete/cfg/ignite-config.xml`. 
 * [Connect](https://www.gridgain.com/docs/control-center/latest/connect-ignite-cluster) Control Center with your Ignite cluster.
 
 ## Example #1: Load World Database and Run SQL Queries
