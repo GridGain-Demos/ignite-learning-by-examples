@@ -21,6 +21,10 @@ import java.util.Objects;
 import org.apache.ignite.cache.affinity.AffinityKeyMapped;
 
 public class CityKey {
+    /**
+     * At the moment, the letters of the key's fields have to be capitalized to overcome this limitation:
+     * https://issues.apache.org/jira/browse/IGNITE-6785
+     */
     private int ID;
 
     private String COUNTRYCODE;
