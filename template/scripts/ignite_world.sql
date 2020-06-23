@@ -35,8 +35,7 @@ CREATE TABLE City (
   District CHAR(20),
   Population INT(11),
   PRIMARY KEY (ID, CountryCode)
-) WITH "template=partitioned, backups=1, atomicity=transactional, CACHE_NAME=City,
-    VALUE_TYPE=org.gridgain.examples.model.City, KEY_TYPE=org.gridgain.examples.model.CityKey";
+) WITH "template=partitioned, backups=1, atomicity=transactional, CACHE_NAME=City";
 
 CREATE INDEX idx_country_code ON city (CountryCode);
 
