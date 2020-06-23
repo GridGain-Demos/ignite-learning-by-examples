@@ -57,8 +57,6 @@ public class AppTemplate3Compute {
         //Getting a cluster node and a partition that store a primary copy of all the cities with 'countryCode'.
         Affinity<String> affinity = client.affinity("Country");
 
-        ClusterNode node = affinity.mapKeyToNode(countryCode);
-
         int partition = affinity.partition(countryCode);
 
         //Scheduling the task for calculation on that primary node.
