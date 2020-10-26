@@ -1,4 +1,4 @@
-# Learning Apache Ignite Trough Examples
+# Learning Apache Ignite Through Examples
 
 This project introduces you to essential capabilities of Ignite by showing how to build an application that uses various
 APIs of the project. In particular, you're going to use the World database schema to learn how to access and process 
